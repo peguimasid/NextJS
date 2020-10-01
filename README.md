@@ -1,7 +1,36 @@
-<h1 align="center">
-  <img src="https://api.themikelewis.com/media/uploads/2019/03/11/68747470733a2f2f6173736574732e7a6569742e636f2f6.original.png.1200x0_q84_crop-smart.png" width="800px" />
-</h1>
+<h1 align="center">Welcome to Next.js 👋</h1>
+<p>
+  <a href="#" target="_blank">
+    <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" />
+  </a>
+</p>
 
-<h3 align="center">
-  Brincando um pouco com Next.js
-</h3>
+> Playing a little with Next.js in a small project made in the bonus course of Rocketseat
+
+### 🏠 [Homepage](https://github.com/peguimasid/NextJS)
+
+## Install
+
+```sh
+git clone https://github.com/peguimasid/NextJS.git
+```
+
+## Usage
+
+```sh
+yarn dev
+```
+
+## Author
+
+👤 **Guilhermo Masid**
+
+* Github: [@peguimasid](https://github.com/peguimasid)
+* LinkedIn: [@Guilhermo Masid](https://www.linkedin.com/in/guilhermo-masid-494677b8/)
+
+## Show your support
+
+Give a ⭐️ if this project helped you!
+
+***
+
