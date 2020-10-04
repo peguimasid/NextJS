@@ -1,4 +1,5 @@
 import { GetServerSideProps } from 'next';
+import SEO from '~/components/SEO';
 import { Title } from '~/styles/pages/Home';
 
 interface IProduct {
@@ -19,6 +20,12 @@ export default function Home({ recommendedProducts }: HomeProps) {
 
   return (
     <div>
+      <SEO 
+        title="Home"
+        image="boost.png"
+        shouldIndexPage={false}
+      />
+
       <section>
         <Title>Products</Title>
 
@@ -32,7 +39,6 @@ export default function Home({ recommendedProducts }: HomeProps) {
           })}
         </ul>
       </section>
-
       <button onClick={handleSum}>Sum!</button>
     </div>
   )
