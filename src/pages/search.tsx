@@ -16,8 +16,6 @@ export default function Search({ searchResults }: SearchProps) {
 
   const router = useRouter();
 
-  console.log(searchResults);
-
   function handleSearch(e: FormEvent) {
     e.preventDefault();
 

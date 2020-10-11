@@ -2,11 +2,15 @@ import { GetServerSideProps } from 'next';
 import Link from 'next/link';
 import SEO from '~/components/SEO';
 import { client } from '~/lib/prismic';
-import { Title } from '~/styles/pages/Home';
 import Prismic from 'prismic-javascript';
 import PrismicDOM from 'prismic-dom';
 import { Document } from 'prismic-javascript/types/documents';
 
+import { 
+  Container,
+  Title,
+  ProductListItem
+} from '~/styles/pages/Home';
 interface HomeProps {
   recommendedProducts: Document[];
 }
@@ -14,31 +18,30 @@ interface HomeProps {
 
 export default function Home({ recommendedProducts }: HomeProps) {
   return (
-    <div>
+    <Container>
       <SEO 
         title="Home"
         image="boost.png"
-        shouldIndexPage={false}
       />
 
       <section>
-        <Title>Products</Title>
+        <Title>Todos os produtos:</Title>
 
         <ul>
           {recommendedProducts.map(recommendedProduct => {
             return (
-              <li key={recommendedProduct.id}>
-                <Link href={`/products/${recommendedProduct.uid}`}>
+            <ProductListItem key={recommendedProduct.id}>
+              <Link href={`/products/${recommendedProduct.uid}`}>
                   <a>
                     {PrismicDOM.RichText.asText(recommendedProduct.data.title)}
                   </a>
-                </Link>
-              </li>
+              </Link>
+            </ProductListItem>
             )
           })}
         </ul>
       </section>
-    </div>
+    </Container>
   )
 }
 
