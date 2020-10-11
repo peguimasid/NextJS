@@ -8,6 +8,7 @@ import { Document } from 'prismic-javascript/types/documents';
 
 import { 
   Container,
+  SearchContainer,
   Title,
   ProductListItem
 } from '~/styles/pages/Home';
@@ -23,6 +24,12 @@ export default function Home({ recommendedProducts }: HomeProps) {
         title="Home"
         image="boost.png"
       />
+
+    <SearchContainer>
+      <Link href="/search">
+        <a>Buscar produto</a>
+      </Link>
+    </SearchContainer>
 
       <section>
         <Title>Todos os produtos:</Title>

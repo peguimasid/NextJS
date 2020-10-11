@@ -4,6 +4,12 @@ import { useRouter } from 'next/router';
 import PrismicDOM from 'prismic-dom';
 import { Document } from 'prismic-javascript/types/documents';
 
+import { 
+  Container,
+  ImageContainer,
+  ProductDetailsContainer
+} from '~/styles/pages/Product';
+
 interface ProductProps {
   product: Document;
 }
@@ -16,17 +22,21 @@ export default function Product({ product }: ProductProps) {
   }
 
   return (
-    <div>
-      <h1>
-        {PrismicDOM.RichText.asText(product.data.title)}
-      </h1>
+    <Container>
+      <ImageContainer>
+        <img src={product.data.thumbnail.url} alt={PrismicDOM.RichText.asText(product.data.title)}/>
+      </ImageContainer>
+
+      <ProductDetailsContainer>
+      <h2>{PrismicDOM.RichText.asText(product.data.title)}</h2>
 
       <div dangerouslySetInnerHTML={{ __html: PrismicDOM.RichText.asHtml(product.data.description)}} />
 
-      <p>${product.data.price}</p>
+      <h3>{new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(product.data.price)}</h3>
+      </ProductDetailsContainer>
 
-      <img src={product.data.thumbnail.url} width="200" alt={PrismicDOM.RichText.asText(product.data.title)}/>
-    </div>
+      
+    </Container>
   )
 }
 

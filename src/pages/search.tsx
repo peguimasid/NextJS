@@ -7,14 +7,24 @@ import { client } from "~/lib/prismic";
 import PrismicDOM from 'prismic-dom';
 import { Document } from 'prismic-javascript/types/documents';
 
+import { 
+  Container,
+  BackToMainPageContainer,
+  SearchContainer,
+  ProductListItem
+} from '~/styles/pages/Search';
+
 interface SearchProps {
   searchResults: Document[];
 }
 
 export default function Search({ searchResults }: SearchProps) {
   const [search, setSearch] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const router = useRouter();
+
+  console.log(searchResults);
 
   function handleSearch(e: FormEvent) {
     e.preventDefault();
@@ -25,26 +35,37 @@ export default function Search({ searchResults }: SearchProps) {
   }
 
   return (
-    <div>
-      <form onSubmit={handleSearch}>
-        <input type="text" value={search} onChange={e => setSearch(e.target.value)} />
-        <button type="submit">Search</button>
-      </form>
+    <Container>
+      <BackToMainPageContainer>
+        <Link href="/">
+          <a> Voltar para página inicial</a>
+        </Link>
+      </BackToMainPageContainer>
+      <SearchContainer>
+        <form onSubmit={handleSearch}>
+          <input type="text" value={search} onChange={e => setSearch(e.target.value)} />
+          <button type="submit">Search</button>
+        </form>
+      </SearchContainer>
 
-      <ul>
+      { loading ? (
+        <h1>Carregando...</h1>
+      ) : (
+        <ul>
           {searchResults.map(product => {
             return (
-              <li key={product.id}>
+              <ProductListItem key={product.id}>
                 <Link href={`/products/${product.uid}`}>
                   <a>
                     {PrismicDOM.RichText.asText(product.data.title)}
                   </a>
                 </Link>
-              </li>
+              </ProductListItem>
             )
           })}
         </ul>
-    </div>
+      )}
+    </Container>
   )
 }
 
