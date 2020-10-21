@@ -7,7 +7,7 @@
 
 > Playing a little with Next.js in a small project made in the bonus course of Rocketseat
 
-### 🏠 [Homepage](https://github.com/peguimasid/NextJS)
+### 🏠 [Click here to see project in production](https://curso-nextjs-rocketseat.vercel.app/)
 
 ## Install
 
